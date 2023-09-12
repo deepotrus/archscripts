@@ -7,10 +7,9 @@
 # Create Physical Volume, Volume Groups and Logical Volumes
 pvcreate --dataalignment 1m /dev/sda2
 vgcreate volgroup0 /dev/sda2
-lvcreate -L 30 GB volgroup0 -h lv_root
+lvcreate -L 30GB volgroup0 -n lv_root
 lvcreate -l 100%FREE volgroup0 -n lv_home
 modprobe dm_mod
-vgscan
 vgchange -ay
 
 mkfs.ext4 /dev/volgroup0/lv_root
