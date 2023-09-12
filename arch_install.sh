@@ -6,15 +6,16 @@
 # arch-chroot /mnt
 
 # At this point distribution is installed but not the kernel
-pacman -S linux linux-headers
-pacman -S linux-lts linux-lts-headers
-pacman -S vim
-pacman -S base-devel openssh
-pacman -S networkmanager wpa_supplicant wireless_tools netctl
-pacman -S dialog
+pacman -Sy linux linux-headers
+pacman -Sy linux-lts linux-lts-headers
+pacman -Sy vim
+pacman -Sy base-devel openssh
+systemctl enable sshd
+pacman -Sy networkmanager wpa_supplicant wireless_tools netctl
+pacman -Sy dialog
 systemctl enable NetworkManager
 
-pacman -S lvm2
+pacman -Sy lvm2
 
 # Now modify mkinitcpio.conf
 # Then add users and password
